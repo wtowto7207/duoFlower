@@ -1,10 +1,17 @@
 <template>
   <div class="container" @click="clickHandle('test click', $event)">
     <div class="userinfo" @click="bindViewTap">
-      <image class="userinfo-avatar" v-if="userInfo.avatarUrl" :src="imgUrl" mode="center" ></image>
+      <swiper class="swiper-items-wrap" :next-margin="nextMargin" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration" :circular="circular">
+        <block v-for="(item,index) in imgUrls" :key="index">
+          <swiper-item class="swiper-item-wrap" >
+            <image :src="item" class="slide-image" />
+          </swiper-item>
+        </block>
+      </swiper>
+      <!-- <image class="userinfo-avatar" v-if="userInfo.avatarUrl" :src="imgUrl" mode="center"></image>
       <div class="userinfo-nickname">
         <text>{{userInfo.nickName}}</text>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -17,7 +24,18 @@
       return {
         motto: 'Hello World',
         userInfo: {},
-        imgUrl:'http://www.5068.com/uploads/allimg/150615/1-150615153947.jpg'
+        imgUrl: 'http://www.5068.com/uploads/allimg/150615/1-150615153947.jpg',
+        indicatorDots: false,
+        autoplay: false,
+        interval: 5000,
+        duration: 1000,
+        nextMargin:'80rpx',
+        circular:true,
+        imgUrls: [
+          'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+          'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
+          'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
+        ]
       }
     },
 
@@ -61,6 +79,19 @@
   .userinfo {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    width: 750rpx;
+  }
+
+  .swiper-items-wrap{
+    height: 700rpx;
+  }
+  .swiper-item-wrap{
+   
+  }
+
+  .slide-image{
+    padding: 20rpx;
   }
 
   .userinfo-avatar {

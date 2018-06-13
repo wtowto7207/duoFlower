@@ -16,6 +16,8 @@ export default {
       "color":"#898989",
       "selectedColor":"#000000",
       "list": [{
+        "iconPath":"static/asset/img/wikiIconPath.png",
+        "selectedIconPath":"static/asset/img/wikiSelectedIconPath.png",
         "pagePath": "pages/wiki/main",
         "text": "百科"
       },{
